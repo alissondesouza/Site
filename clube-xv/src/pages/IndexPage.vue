@@ -1,6 +1,7 @@
 <template>
   <q-page>
     <HeroSection />
+
     <AboutSection />
     <ValuesSection />
     <HistorySection />
@@ -35,7 +36,9 @@ import RestaurantSection from "components/sections/RestaurantSection.vue";
 import BookingSection from "components/sections/BookingSection.vue";
 import RulesSection from "components/sections/RulesSection.vue";
 import GuestPolicySection from "components/sections/GuestPolicySection.vue";
+// ##### LINHA CORRIGIDA (estava components-sections) #####
 import GuidelinesSection from "components/sections/GuidelinesSection.vue";
+// ##### LINHA CORRIGIDA (estava components-sections) #####
 import PlansSection from "components/sections/PlansSection.vue";
 
 export default defineComponent({
@@ -47,7 +50,7 @@ export default defineComponent({
     ValuesSection,
     HistorySection,
     TimelineSection,
-    LeadershipSection, // O novo componente de liderança
+    LeadershipSection,
     ModalitiesSection,
     SocialActivitiesSection,
     StructureSection,

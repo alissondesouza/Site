@@ -12,6 +12,14 @@
             >
           </div>
         </q-toolbar-title>
+
+        <q-btn
+          flat
+          label="Campeonato"
+          to="/campeonato"
+          class="q-mr-sm"
+          icon="emoji_events"
+        />
         <q-btn
           color="accent"
           label="Associe-se"
@@ -21,71 +29,59 @@
           rounded
         />
       </q-toolbar>
-    </q-header>
 
+      <scores-marquee-section />
+    </q-header>
     <q-page-container>
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-9 text-white interactive-footer">
+    <q-footer class="bg-grey-9 text-white q-pa-md">
       <div class="container">
-        <div class="row justify-between items-center minimal-footer">
-          <div>&copy; 2025 - Clube XV de Novembro</div>
-          <div>
-            <q-icon name="expand_less" class="gt-sm" /> Passe o mouse para ver
-            mais
+        <div class="row items-center q-col-gutter-md">
+          <div class="col-12 col-md-5 text-center text-md-left">
+            <div class="text-weight-bold">
+              Clube Cultural e Recreativo XV de Novembro
+            </div>
+            <div class="text-caption">Rua Iguaçu, nº 90 – Saudades/SC</div>
+          </div>
+          <div class="col-12 col-md-4 text-center">
+            <div class="text-caption">
+              <strong>Reservas:</strong> (49) 98826-4343 |
+              <strong>Presidente:</strong> (49) 98805-6846
+            </div>
+          </div>
+          <div class="col-12 col-md-3 text-center text-md-right">
+            <q-btn
+              flat
+              round
+              dense
+              icon="fab fa-facebook"
+              href="#"
+              target="_blank"
+            />
+            <q-btn
+              flat
+              round
+              dense
+              icon="fab fa-instagram"
+              href="#"
+              target="_blank"
+              class="q-mx-sm"
+            />
+            <q-btn
+              flat
+              round
+              dense
+              icon="fab fa-whatsapp"
+              href="#"
+              target="_blank"
+            />
           </div>
         </div>
-
-        <div class="expandable-content">
-          <q-separator dark class="q-my-md" />
-          <div class="row q-col-gutter-lg justify-between">
-            <div class="col-12 col-md-4">
-              <p class="text-subtitle1 text-weight-bold">Localização</p>
-              <p><strong>Endereço:</strong> Rua Iguaçu, nº 90 – Saudades/SC</p>
-              <p><strong>CNPJ:</strong> 083.219.709/0001-00</p>
-            </div>
-            <div class="col-12 col-md-4">
-              <p class="text-subtitle1 text-weight-bold">Contatos Principais</p>
-              <p>
-                <strong>Reservas:</strong> Inacir Dalacorte - (49) 98826-4343
-              </p>
-              <p>
-                <strong>Presidente:</strong> Vilmar Pappis - (49) 98805-6846
-              </p>
-            </div>
-            <div class="col-12 col-md-4">
-              <p class="text-subtitle1 text-weight-bold">Redes Sociais</p>
-              <p>
-                <q-btn
-                  flat
-                  round
-                  dense
-                  icon="fab fa-facebook"
-                  href="#"
-                  target="_blank"
-                  class="q-mr-sm"
-                />
-                <q-btn
-                  flat
-                  round
-                  dense
-                  icon="fab fa-instagram"
-                  href="#"
-                  target="_blank"
-                  class="q-mr-sm"
-                />
-                <q-btn
-                  flat
-                  round
-                  dense
-                  icon="fab fa-whatsapp"
-                  href="#"
-                  target="_blank"
-                />
-              </p>
-            </div>
-          </div>
+        <q-separator dark class="q-mt-md q-mb-sm" />
+        <div class="text-center text-caption">
+          &copy; 2025 - Todos os direitos reservados.
         </div>
       </div>
     </q-footer>
@@ -94,7 +90,16 @@
 
 <script>
 import { defineComponent } from "vue";
-export default defineComponent({ name: "MainLayout" });
+// ##### IMPORTANDO O NOVO COMPONENTE #####
+import ScoresMarqueeSection from "components/sections/ScoresMarqueeSection.vue";
+
+export default defineComponent({
+  name: "MainLayout",
+  // ##### REGISTRANDO O NOVO COMPONENTE #####
+  components: {
+    ScoresMarqueeSection,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -102,41 +107,5 @@ export default defineComponent({ name: "MainLayout" });
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-}
-
-.interactive-footer {
-  // Estado inicial (pequeno)
-  height: 50px;
-  transition: height 0.4s ease-in-out;
-  overflow: hidden; // Esconde o conteúdo que transborda
-  padding-top: 0;
-  padding-bottom: 0;
-
-  .minimal-footer {
-    height: 50px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  // Estado final (quando o mouse está sobre ele)
-  &:hover {
-    height: 230px; // Altura expandida
-  }
-}
-
-// Em telas pequenas, desabilitamos o efeito e mostramos tudo
-@media (max-width: $breakpoint-sm-max) {
-  .interactive-footer {
-    height: auto; // Altura automática
-    padding: 1rem 0;
-
-    .minimal-footer {
-      display: none; // Esconde a barra "passe o mouse"
-    }
-
-    &:hover {
-      height: auto; // Mantém a altura automática
-    }
-  }
 }
 </style>
