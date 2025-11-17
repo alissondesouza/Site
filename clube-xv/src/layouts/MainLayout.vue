@@ -12,25 +12,7 @@
             >
           </div>
         </q-toolbar-title>
-
-        <q-btn
-          flat
-          label="Campeonato"
-          to="/campeonato"
-          class="q-mr-sm"
-          icon="emoji_events"
-        />
-        <q-btn
-          color="accent"
-          label="Associe-se"
-          href="#"
-          target="_blank"
-          unelevated
-          rounded
-        />
       </q-toolbar>
-
-      <scores-marquee-section />
     </q-header>
     <q-page-container>
       <router-view />
@@ -90,14 +72,12 @@
 
 <script>
 import { defineComponent } from "vue";
-// ##### IMPORTANDO O NOVO COMPONENTE #####
-import ScoresMarqueeSection from "components/sections/ScoresMarqueeSection.vue";
+// IMPORTAÇÃO DO LETREIRO REMOVIDA
 
 export default defineComponent({
   name: "MainLayout",
-  // ##### REGISTRANDO O NOVO COMPONENTE #####
   components: {
-    ScoresMarqueeSection,
+    // REGISTRO DO LETREIRO REMOVIDO
   },
 });
 </script>
